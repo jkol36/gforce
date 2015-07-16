@@ -1,0 +1,20 @@
+{
+  "name": "gforce",
+  "version": "1.0",
+  "authors": [
+    "Jon Kolman <jonathankolman@gmail.com>"
+  ],
+  "main": "app.html",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "license": "Private",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
