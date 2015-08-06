@@ -4,15 +4,15 @@ from django.db import models
 
 
 class ImpactEvent(models.Model):
-	ax = models.IntegerField(null=True, blank=True)
-	ay = models.IntegerField(null=True, blank=True)
-	az = models.IntegerField(null=True, blank=True)
-	gx = models.IntegerField(null=True, blank=True)
-	gy = models.IntegerField(null=True, blank=True)
-	gz = models.IntegerField(null=True, blank=True)
-	timestamp = models.ForeignKey('TimeStamp')
+	ax = models.FloatField(null=True, blank=True)
+	ay = models.FloatField(null=True, blank=True)
+	az = models.FloatField(null=True, blank=True)
+	gx = models.FloatField(null=True, blank=True)
+	gy = models.FloatField(null=True, blank=True)
+	gz = models.FloatField(null=True, blank=True)
+	timestamp = models.ForeignKey('TimeStamp', null=True, blank=True)
 
 
 class TimeStamp(models.Model):
-	time_counter = models.IntegerField(null=True, blank=True)
-	time_accessed = models.DateTimeField()
+	time_counter = models.IntegerField(null=True)
+	time_accessed = models.DateTimeField(null=True, blank=True)
