@@ -1,4 +1,5 @@
 from django.db import models
+from gforce.profiles.models import Profile
 
 # Create your models here.
 
@@ -16,3 +17,8 @@ class ImpactEvent(models.Model):
 class TimeStamp(models.Model):
 	time_counter = models.IntegerField(null=True)
 	time_accessed = models.DateTimeField(null=True, blank=True)
+
+
+class MouthGuard(models.Model):
+	mac_address = models.GenericIPAddressField(protocol="both")
+	profile = models.ForeignKey(Profile, null=True, blank=True)

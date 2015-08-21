@@ -42,7 +42,11 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'gforce.app',
-    'rest_framework'
+    'gforce.profiles',
+    'gforce.players',
+    'gforce.teams',
+    'rest_framework',
+    'rest_framework.authtoken',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,6 +60,13 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'gforce.urls'
+
+REST_FRAMEWORK = {
+     'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 
 
@@ -80,7 +91,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+AUTH_USER_MODEL = 'profiles.Profile'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -92,8 +103,17 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (os.path.join('gforce/static'),)
 
+PUSHER_KEY = "92e6deea4ee5542dc495"
+PUSHER_SECRET = "712204ca7293ef75bd11"
+PUSHER_APP_ID = "135314"
+
 try:
     from gforce.dev import *
 except ImportError:
     print "cant import dev settings"
     pass
+
+try: 
+    from gforce.prod import *
+except ImportError:
+    print "cant import prod settings"

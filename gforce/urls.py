@@ -15,15 +15,19 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
 from django.contrib import admin
-from gforce.app.views import app
+from gforce.app.views import app, socketio_view
 from gforce.app.views import ImpactEventViewSet
+import socketio.sdjango
 
 router = DefaultRouter()
 router.register(r'impactEvents', ImpactEventViewSet)
 
 urlpatterns = [
+	url(r"^socket\.io/", socketio_view),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^api-token-auth/', views.obtain_auth_token),
     url(r'^$',app, name="home"),
     url(r'^api/', include(router.urls))
 ]
